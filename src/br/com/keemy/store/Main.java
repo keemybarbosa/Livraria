@@ -116,10 +116,12 @@ public class Main {
         //ESCOLHENDO A CATEGORIA DO PRODUTO PARA IMPRESSÃO
         System.out.println("Informe a categoria do produto:");
         do {
+            System.out.println("[0] - Voltar\n");
             Arrays.stream((CategoriaProduto.values())).toList().forEach(
                     categoria -> System.out.printf("[%d] - %s%n", categoria.getValor(), categoria.toString()));
 
             opcao = scanner.nextInt();
+            if (opcao == 0) return;
 
         } while (CategoriaProduto.getById(opcao) == null);
 
@@ -414,6 +416,7 @@ public class Main {
                 break;
             case 1:
                 venderProduto();
+                menuLoja();
                 break;
 
         }

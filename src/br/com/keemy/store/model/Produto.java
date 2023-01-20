@@ -94,8 +94,9 @@ public class Produto {
         try {
 
             return this.getId() + " - " +
-                    LivrariaUtils.formatarCaracteresFixos(this.getNome(), 50) + " - "
-                    + this.getCategoria().toString() + "(" + this.getCategoria().getValor() + ")";
+                    LivrariaUtils.formatarCaracteresFixos(this.getNome(), 30) + " - " +
+                    LivrariaUtils.formatarCaracteresFixos("Estoque: " + this.getEstoque(),15) + " - " +
+                    this.getCategoria().toString() + "(" + this.getCategoria().getValor() + ")";
         } catch (Exception e){
             return e.toString();
         }
