@@ -3,6 +3,7 @@ package br.com.keemy.store;
 import br.com.keemy.store.controller.ProdutoController;
 import br.com.keemy.store.dao.impl.*;
 import br.com.keemy.store.model.*;
+import br.com.keemy.store.utils.LivrariaUtils;
 
 import java.math.BigDecimal;
 
@@ -116,7 +117,7 @@ public class Main {
         //ESCOLHENDO A CATEGORIA DO PRODUTO PARA IMPRESSÃO
         System.out.println("Informe a categoria do produto:");
         do {
-            System.out.println("[0] - Voltar\n");
+            System.out.println("[0] - Voltar");
             Arrays.stream((CategoriaProduto.values())).toList().forEach(
                     categoria -> System.out.printf("[%d] - %s%n", categoria.getValor(), categoria.toString()));
 
@@ -402,10 +403,11 @@ public class Main {
         Formatter formatter = new Formatter();
         String cabecalho =
                 "##################################################################################\n" +
-                        "#                                  LOJA                                    #\n" +
-                        "##################################################################################\n" +
-                        "#Saldo: " + formatter.format("%.2f", Loja.getInstance().getCaixa()) + "                     #\n" +
-                        "##################################################################################";
+                "#                                    LOJA                                        #\n" +
+                "##################################################################################\n" +
+                "#" + LivrariaUtils.formatarCaracteresFixos(
+                                "Saldo: " + formatter.format("%.2f", Loja.getInstance().getCaixa()),80) + "#\n" +
+                "##################################################################################";
         Scanner scanner = new Scanner(System.in);
         int op = -1;
         String menuOptions[] = {"Vender"};
