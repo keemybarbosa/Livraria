@@ -443,22 +443,23 @@ public class Main {
                 System.out.printf("Produto: %s Preço: %.2f Estoque: %d%n", produto.getNome(), produto.getPreco(), produto.getEstoque());
                 Integer quantidade = lerNumero("Digite a quantidade:");
 
-                BigDecimal valorCompra = (produto.getPreco().multiply(new BigDecimal(quantidade)));
+                if (quantidade > produto.getEstoque()) {
+                    System.out.printf("Estoque Insuficiente(%d) - você informou %d unidades!%n", produto.getEstoque(), quantidade);
+                    pausar();
+                } else {
+                    BigDecimal valorCompra = (produto.getPreco().multiply(new BigDecimal(quantidade)));
 
-                Loja.getInstance().setCaixa(Loja.getInstance().getCaixa().add(valorCompra));
+                    Loja.getInstance().setCaixa(Loja.getInstance().getCaixa().add(valorCompra));
 
-                System.out.printf("Total: %.2f%n", valorCompra);
+                    System.out.printf("Total: %.2f%n", valorCompra);
+                    listaDeProdutos.stream().filter(item -> item.getId() == produto.getId()).findAny()
+                            .map(item -> {
+                                item.setEstoque(item.getEstoque() - quantidade);
+                                return item;
+                            });
 
-
-
-
-                listaDeProdutos.stream().filter(item -> item.getId() == produto.getId()).findAny()
-                        .map(item -> {
-                            item.setEstoque(item.getEstoque() - quantidade);
-                            return item;
-                        });
-
-                System.out.println("Produto Vendido!");
+                    System.out.println("Produto Vendido!");
+                }
             }
 
         } else {
