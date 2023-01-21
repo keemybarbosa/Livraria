@@ -11,7 +11,7 @@ import java.util.List;
 public class FilmeImpl implements produtoDao {
     @Override
     public void cadastrar(Produto p) {
-        Filme filme = new Filme(p.getId(), p.getNome(), p.getPreco(), p.getEstoque(), p.getCategoria(),
+        Filme filme = new Filme(p.getId(), p.getNome(), p.getPreco(), p.getEstoque(), p.isExcluido(), p.getCategoria(),
                 ((Filme)p).getEstudio(), ((Filme)p).getDiretores(), ((Filme)p).getGeneros(), ((Filme)p).getProdutores());
 
         Global.listaDeProdutos.add(filme);
@@ -25,7 +25,7 @@ public class FilmeImpl implements produtoDao {
 
     @Override
     public void atualizar(Produto p) {
-        Filme filme = new Filme(p.getId(), p.getNome(), p.getPreco(), p.getEstoque(), p.getCategoria(),
+        Filme filme = new Filme(p.getId(), p.getNome(), p.getPreco(), p.getEstoque(), p.isExcluido(), p.getCategoria(),
                 ((Filme)p).getEstudio(), ((Filme)p).getDiretores(), ((Filme)p).getGeneros(), ((Filme)p).getProdutores());
         ProdutoController.alterarProduto(filme);
     }

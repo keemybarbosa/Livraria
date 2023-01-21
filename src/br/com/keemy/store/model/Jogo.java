@@ -12,9 +12,9 @@ public class Jogo extends Produto{
     private List<String> generos = new ArrayList<String>();
     private String estudio;
 
-    public Jogo(int idProduto, String nome, BigDecimal preco, int estoque, Global.CategoriaProduto categoria,
+    public Jogo(int idProduto, String nome, BigDecimal preco, int estoque, boolean excluido, Global.CategoriaProduto categoria,
                 String distribuidora, List<String> generos, String estudio) {
-        super(idProduto, nome, preco, estoque, categoria);
+        super(idProduto, nome, preco, estoque, excluido, categoria);
         this.distribuidora = distribuidora;
         this.generos = generos;
         this.estudio = estudio;
@@ -24,10 +24,10 @@ public class Jogo extends Produto{
     public Jogo(Produto entradasProduto) {
 
         super(entradasProduto);
-        this.distribuidora = ((Jogo)entradasProduto).getDistribuidora();
+        /*this.distribuidora = ((Jogo)entradasProduto).getDistribuidora();
         this.generos = ((Jogo)entradasProduto).getGêneros();
         this.estudio = ((Jogo)entradasProduto).getEstúdio();
-        this.idProduto = ((Jogo)entradasProduto).getIdProduto();
+        this.idProduto = ((Jogo)entradasProduto).getIdProduto();*/
     }
 
     public String getDistribuidora() {

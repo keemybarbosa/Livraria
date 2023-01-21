@@ -8,8 +8,8 @@ public class Brinquedo extends Produto {
     private int idProduto;
     private int tipoBrinquedo;
 
-    public Brinquedo(int idProduto, String nome, BigDecimal preco, int estoque, Global.CategoriaProduto categoria, int tipoBrinquedo) {
-        super(idProduto, nome, preco, estoque, categoria);
+    public Brinquedo(int idProduto, String nome, BigDecimal preco, int estoque, boolean excluido,Global.CategoriaProduto categoria, int tipoBrinquedo) {
+        super(idProduto, nome, preco, estoque, excluido, categoria);
         this.tipoBrinquedo = tipoBrinquedo;
         this.idProduto = idProduto;
     }

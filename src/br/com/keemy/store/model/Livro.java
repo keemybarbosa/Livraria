@@ -12,9 +12,9 @@ public class Livro extends Produto{
     private String escritor;
     private String editora;
 
-    public Livro(int idProduto, String nome, BigDecimal preco, int estoque, Global.CategoriaProduto categoria,
+    public Livro(int idProduto, String nome, BigDecimal preco, int estoque, boolean excluido, Global.CategoriaProduto categoria,
                  List<String> generos, String escritor, String editora) {
-        super(idProduto, nome, preco, estoque, categoria);
+        super(idProduto, nome, preco, estoque, excluido, categoria);
         this.generos = generos;
         this.escritor = escritor;
         this.editora = editora;

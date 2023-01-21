@@ -122,7 +122,9 @@ public class Main {
                     categoria -> System.out.printf("[%d] - %s%n", categoria.getValor(), categoria.toString()));
 
             opcao = scanner.nextInt();
-            if (opcao == 0) return;
+            if (opcao == 0) {
+                return;
+            }
 
         } while (CategoriaProduto.getById(opcao) == null);
 
@@ -263,7 +265,7 @@ public class Main {
         }
 
         if (produto == null) {
-            return new Produto(nome, preco, estoque);
+            return new Produto(nome, preco, estoque, false);
         } else {
             return produto;
         }
@@ -339,29 +341,34 @@ public class Main {
         //TODO: remover método
 
 
-        Produto p = new Brinquedo(++Global.lastProductId,"Bola",new BigDecimal(12.51), 10,CategoriaProduto.PRODUTO_BRINQUEDO,1);
-        brinquedoImpl.cadastrar(p);
-
-        p = new Livro(++Global.lastProductId,"O Atheneu",new BigDecimal(4.55), 10,CategoriaProduto.PRODUTO_LIVRO,null,"Stephen King","Saraiva");
-        livroImpl.cadastrar(p);
-
-        p = new Filme(++Global.lastProductId,"De Volta para o Futuro", new BigDecimal(12.44), 10,CategoriaProduto.PRODUTO_FILME,"estúdio",null, null, null);
-        filmeImpl.cadastrar(p);
-
-        p = new Filme(++Global.lastProductId,"Titanic", new BigDecimal(12.99), 10, CategoriaProduto.PRODUTO_FILME,"estúdio",null, null, null);
-        filmeImpl.cadastrar(p);
-
-        p = new Filme(++Global.lastProductId,"Efeito Borboleta", new BigDecimal(12.50), 10, CategoriaProduto.PRODUTO_FILME, "estúdio",null, null, null);
-        filmeImpl.cadastrar(p);
-
-        p = new Livro(++Global.lastProductId,"Dom casmurro",new BigDecimal(4.55), 10, CategoriaProduto.PRODUTO_LIVRO,null,"Stephen King","Saraiva");
-        livroImpl.cadastrar(p);
-
-        p = new Album(++lastProductId, "album1", new BigDecimal(12.6), 10, CategoriaProduto.PRODUTO_ALBUM,
+        Produto p = new Album(++lastProductId, "album1", new BigDecimal(12.6), 10, false,CategoriaProduto.PRODUTO_ALBUM,
                 new ArrayList<>(Arrays.asList(new String[]{"musico1", "musico2"})),
                 new ArrayList<>(Arrays.asList(new String[]{"Gênero1", "gÊnero2"})),
                 new ArrayList<>(Arrays.asList(new String[]{"selo1", "selo2"})));
         albumImpl.cadastrar(p);
+
+        p = new Brinquedo(++Global.lastProductId,"Bola",new BigDecimal(12.51), 10, false, CategoriaProduto.PRODUTO_BRINQUEDO,1);
+        brinquedoImpl.cadastrar(p);
+
+        p = new Livro(++Global.lastProductId,"O Atheneu",new BigDecimal(4.55), 10, false, CategoriaProduto.PRODUTO_LIVRO,null,"Stephen King","Saraiva");
+        livroImpl.cadastrar(p);
+
+        p = new Filme(++Global.lastProductId,"De Volta para o Futuro", new BigDecimal(12.44), 10, false, CategoriaProduto.PRODUTO_FILME,"estúdio",null, null, null);
+        filmeImpl.cadastrar(p);
+
+        p = new Filme(++Global.lastProductId,"Titanic", new BigDecimal(12.99), 10, false, CategoriaProduto.PRODUTO_FILME,"estúdio",null, null, null);
+        filmeImpl.cadastrar(p);
+
+        p = new Filme(++Global.lastProductId,"Efeito Borboleta", new BigDecimal(12.50), 10, false, CategoriaProduto.PRODUTO_FILME, "estúdio",null, null, null);
+        filmeImpl.cadastrar(p);
+
+        p = new Livro(++Global.lastProductId,"Dom casmurro",new BigDecimal(4.55), 10, false, CategoriaProduto.PRODUTO_LIVRO,null,"Stephen King","Saraiva");
+        livroImpl.cadastrar(p);
+
+        p = new Jogo(++Global.lastProductId, "teste",new BigDecimal(3.77),14,false, CategoriaProduto.PRODUTO_JOGO,null,null, "Creative Labs");
+        jogoImpl.cadastrar(p);
+
+
     }
     private static void exibirMenuPrincipal() {
         String cabecalho =
@@ -438,6 +445,7 @@ public class Main {
 
             if(produto == null){
                 System.out.println("Produto não encontrado!");
+                pausar();
             } else {
 
                 System.out.printf("Produto: %s Preço: %.2f Estoque: %d%n", produto.getNome(), produto.getPreco(), produto.getEstoque());
@@ -452,13 +460,21 @@ public class Main {
                     Loja.getInstance().setCaixa(Loja.getInstance().getCaixa().add(valorCompra));
 
                     System.out.printf("Total: %.2f%n", valorCompra);
+
+
+                    boolean excluir = (quantidade == produto.getEstoque());
                     listaDeProdutos.stream().filter(item -> item.getId() == produto.getId()).findAny()
                             .map(item -> {
                                 item.setEstoque(item.getEstoque() - quantidade);
+                                item.setExcluido(true);
                                 return item;
                             });
 
+
+
+
                     System.out.println("Produto Vendido!");
+                    pausar();
                 }
             }
 
@@ -508,7 +524,7 @@ public class Main {
 
         switch (op){
             case 0:
-                break; //volta pro menu principal
+                return;
             case 1:
                 cadastrarProdutos();
                 break;
@@ -523,6 +539,7 @@ public class Main {
                 excluirProdutos();
                 break;
         }
+        exibirMenuManutencaoProdutos();
     }
 
 }

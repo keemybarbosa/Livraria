@@ -14,9 +14,9 @@ public class Filme extends Produto{
     private List<String> generos = new ArrayList<String>();
     private List<String> produtores = new ArrayList<String>();
 
-    public Filme(int idProduto, String nome, BigDecimal preco, int estoque, Global.CategoriaProduto categoria,
+    public Filme(int idProduto, String nome, BigDecimal preco, int estoque, boolean excluido, Global.CategoriaProduto categoria,
                  String estudio, List<String> diretores, List<String> generos, List<String> produtores) {
-        super(idProduto, nome, preco, estoque, categoria);
+        super(idProduto, nome, preco, estoque, excluido, categoria);
         this.estudio = estudio;
         this.diretores = diretores;
         this.generos = generos;

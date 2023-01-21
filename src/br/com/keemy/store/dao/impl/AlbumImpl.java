@@ -12,7 +12,7 @@ public class AlbumImpl implements produtoDao {
 
     @Override
     public void cadastrar(Produto p) {
-        Album album = new Album(p.getId(), p.getNome(), p.getPreco(), p.getEstoque(), p.getCategoria(),
+        Album album = new Album(p.getId(), p.getNome(), p.getPreco(), p.getEstoque(), p.isExcluido(), p.getCategoria(),
                 ((Album)p).getMusicosBandas(), ((Album)p).getGeneros(), ((Album)p).getSelos());
 
         Global.listaDeProdutos.add(album);
@@ -27,7 +27,7 @@ public class AlbumImpl implements produtoDao {
 
     @Override
     public void atualizar(Produto p) {
-        Album album = new Album(p.getId(), p.getNome(), p.getPreco(), p.getEstoque(), p.getCategoria(),
+        Album album = new Album(p.getId(), p.getNome(), p.getPreco(), p.getEstoque(), p.isExcluido(),p.getCategoria(),
                 ((Album)p).getMusicosBandas(), ((Album)p).getGeneros(), ((Album)p).getSelos());
         ProdutoController.alterarProduto(album);
     }

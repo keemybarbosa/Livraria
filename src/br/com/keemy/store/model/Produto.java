@@ -14,31 +14,37 @@ public class Produto {
 
     private int estoque;
 
+    private boolean excluido;
+
     public Produto(){
         this.id = ++Global.lastProductId;
+        excluido = false;
     }
 
-    public Produto(int id, String nome, BigDecimal preco, int estoque, Global.CategoriaProduto categoria) {
+    public Produto(int id, String nome, BigDecimal preco, int estoque, boolean excluido, Global.CategoriaProduto categoria) {
         this.id = id;
         this.nome = nome;
         this.preco = preco;
         this.estoque = estoque;
         this.categoria = categoria;
+        this.excluido = excluido;
     }
 
-    public Produto(String nome, BigDecimal preco, int estoque, Global.CategoriaProduto categoria) {
+    public Produto(String nome, BigDecimal preco, int estoque, boolean excluido, Global.CategoriaProduto categoria) {
         this.id = ++Global.lastProductId;
         this.nome = nome;
         this.preco = preco;
         this.estoque = estoque;
         this.categoria = categoria;
+        this.excluido = excluido;
     }
 
-    public Produto(String nome, BigDecimal preco, int estoque) {
+    public Produto(String nome, BigDecimal preco, int estoque, boolean excluido) {
         this.id = ++Global.lastProductId;
         this.nome = nome;
         this.preco = preco;
         this.estoque = estoque;
+        this.excluido = excluido;
     }
 
     public Produto(Produto entradasProduto) {
@@ -47,6 +53,7 @@ public class Produto {
         this.preco = entradasProduto.getPreco();
         this.estoque = entradasProduto.getEstoque();
         this.categoria = entradasProduto.getCategoria();
+        this.excluido = entradasProduto.isExcluido();
     }
 
     public int getId() {
@@ -87,6 +94,14 @@ public class Produto {
 
     public void setEstoque(int estoque) {
         this.estoque = estoque;
+    }
+
+    public boolean isExcluido() {
+        return excluido;
+    }
+
+    public void setExcluido(boolean excluido) {
+        this.excluido = excluido;
     }
 
     @Override

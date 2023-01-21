@@ -11,7 +11,7 @@ import java.util.List;
 public class LivroImpl implements produtoDao {
     @Override
     public void cadastrar(Produto p) {
-        Livro livro = new Livro(p.getId(), p.getNome(), p.getPreco(), p.getEstoque(), p.getCategoria(),
+        Livro livro = new Livro(p.getId(), p.getNome(), p.getPreco(), p.getEstoque(), p.isExcluido(), p.getCategoria(),
                 ((Livro)p).getGeneros(), ((Livro)p).getEscritor(), ((Livro)p).getEditora());
 
         Global.listaDeProdutos.add(livro);
@@ -25,7 +25,7 @@ public class LivroImpl implements produtoDao {
 
     @Override
     public void atualizar(Produto p) {
-        Livro livro = new Livro(p.getId(), p.getNome(), p.getPreco(), p.getEstoque(), p.getCategoria(),
+        Livro livro = new Livro(p.getId(), p.getNome(), p.getPreco(), p.getEstoque(), p.isExcluido(), p.getCategoria(),
                 ((Livro)p).getGeneros(), ((Livro)p).getEscritor(), ((Livro)p).getEditora());
         ProdutoController.alterarProduto(livro);
     }

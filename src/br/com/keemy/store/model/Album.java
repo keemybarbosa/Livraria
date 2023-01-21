@@ -13,17 +13,17 @@ public class Album extends Produto{
     private List<String> generos = new ArrayList<String>();
     private List<String> selos = new ArrayList<String>();
 
-    public Album(int idProduto, String nome, BigDecimal preco, int estoque, Global.CategoriaProduto categoria,
+    public Album(int idProduto, String nome, BigDecimal preco, int estoque, boolean excluido, Global.CategoriaProduto categoria,
                  List<String> musicosBandas, List<String> generos, List<String> selos) {
-        super(idProduto, nome, preco, estoque, categoria);
+        super(idProduto, nome, preco, estoque, excluido, categoria);
         this.musicosBandas = musicosBandas;
         this.generos = generos;
         this.selos = selos;
         this.idProduto = idProduto;
     }
 
-    public Album(String nome, BigDecimal preco, int estoque, Global.CategoriaProduto categoria) {
-        super(nome, preco, estoque, categoria);
+    public Album(String nome, BigDecimal preco, int estoque, boolean excluido, Global.CategoriaProduto categoria) {
+        super(nome, preco, estoque, excluido, categoria);
     }
 
     public Album(Produto entradasProduto) {

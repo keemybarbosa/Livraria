@@ -11,7 +11,7 @@ import java.util.List;
 public class JogoImpl implements produtoDao {
     @Override
     public void cadastrar(Produto p) {
-        Jogo jogo = new Jogo(p.getId(), p.getNome(), p.getPreco(), p.getEstoque(), p.getCategoria(),
+        Jogo jogo = new Jogo(p.getId(), p.getNome(), p.getPreco(), p.getEstoque(), p.isExcluido(), p.getCategoria(),
                 ((Jogo)p).getDistribuidora(), ((Jogo)p).getGêneros(), ((Jogo)p).getEstúdio());
 
         Global.listaDeProdutos.add(jogo);
@@ -25,7 +25,7 @@ public class JogoImpl implements produtoDao {
 
     @Override
     public void atualizar(Produto p) {
-        Jogo jogo = new Jogo(p.getId(), p.getNome(), p.getPreco(), p.getEstoque(), p.getCategoria(),
+        Jogo jogo = new Jogo(p.getId(), p.getNome(), p.getPreco(), p.getEstoque(), p.isExcluido(), p.getCategoria(),
                 ((Jogo)p).getDistribuidora(), ((Jogo)p).getGêneros(), ((Jogo)p).getEstúdio());
         ProdutoController.alterarProduto(jogo);
     }

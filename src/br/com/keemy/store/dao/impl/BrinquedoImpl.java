@@ -11,7 +11,7 @@ import java.util.List;
 public class BrinquedoImpl implements produtoDao {
     @Override
     public void cadastrar(Produto p) {
-        Brinquedo brinquedo = new Brinquedo(p.getId(), p.getNome(), p.getPreco(), p.getEstoque(), p.getCategoria(),
+        Brinquedo brinquedo = new Brinquedo(p.getId(), p.getNome(), p.getPreco(), p.getEstoque(), p.isExcluido(), p.getCategoria(),
                 ((Brinquedo)p).getTipoBrinquedo());
 
         Global.listaDeProdutos.add(brinquedo);
@@ -25,7 +25,7 @@ public class BrinquedoImpl implements produtoDao {
 
     @Override
     public void atualizar(Produto p) {
-        Brinquedo brinquedo = new Brinquedo(p.getId(), p.getNome(), p.getPreco(), p.getEstoque(), p.getCategoria(),
+        Brinquedo brinquedo = new Brinquedo(p.getId(), p.getNome(), p.getPreco(), p.getEstoque(), p.isExcluido(), p.getCategoria(),
                 ((Brinquedo)p).getTipoBrinquedo());
         ProdutoController.alterarProduto(brinquedo);
     }
