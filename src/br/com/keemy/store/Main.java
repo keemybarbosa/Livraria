@@ -102,7 +102,6 @@ public class Main {
 
         pausar();
 
-        exibirMenuManutencaoProdutos();
     }
     private static void cadastrarProdutos(){
         Scanner scanner = new Scanner(System.in);
