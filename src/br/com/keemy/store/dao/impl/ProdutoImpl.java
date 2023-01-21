@@ -6,6 +6,8 @@ import br.com.keemy.store.model.Produto;
 
 import java.util.List;
 
+import static br.com.keemy.store.Global.listaDeProdutos;
+
 public class ProdutoImpl implements produtoDao {
 
     @Override
@@ -25,6 +27,11 @@ public class ProdutoImpl implements produtoDao {
 
     @Override
     public void deletar(Produto p) {
-        Global.listaDeProdutos.remove(p);
+        Global.listaDeProdutos.stream().filter(item -> item.getId() == p.getId()).findAny()
+                .map(item -> {
+                    item.setEstoque(0);
+                    item.setExcluido(true);
+                    return item;
+                });
     }
 }
