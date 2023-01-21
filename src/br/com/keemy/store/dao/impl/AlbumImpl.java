@@ -16,7 +16,6 @@ public class AlbumImpl implements produtoDao {
                 ((Album)p).getMusicosBandas(), ((Album)p).getGeneros(), ((Album)p).getSelos());
 
         Global.listaDeProdutos.add(album);
-        Global.listaDeAlbuns.add(album);
 
     }
 

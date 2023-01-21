@@ -15,7 +15,6 @@ public class BrinquedoImpl implements produtoDao {
                 ((Brinquedo)p).getTipoBrinquedo());
 
         Global.listaDeProdutos.add(brinquedo);
-        Global.listaDeBrinquedos.add(brinquedo);
     }
 
     @Override

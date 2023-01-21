@@ -15,7 +15,6 @@ public class FilmeImpl implements produtoDao {
                 ((Filme)p).getEstudio(), ((Filme)p).getDiretores(), ((Filme)p).getGeneros(), ((Filme)p).getProdutores());
 
         Global.listaDeProdutos.add(filme);
-        Global.listaDeFilmes.add(filme);
     }
 
     @Override

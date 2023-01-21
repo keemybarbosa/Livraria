@@ -15,7 +15,6 @@ public class JogoImpl implements produtoDao {
                 ((Jogo)p).getDistribuidora(), ((Jogo)p).getGêneros(), ((Jogo)p).getEstúdio());
 
         Global.listaDeProdutos.add(jogo);
-        Global.listaDeJogos.add(jogo);
     }
 
     @Override

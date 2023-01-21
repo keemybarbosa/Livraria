@@ -12,11 +12,6 @@ public class Global {
 
     public static BigDecimal caixaInicial = new BigDecimal(10000);
     public static List<Produto> listaDeProdutos = new ArrayList<Produto>();
-    public static List<Album> listaDeAlbuns = new ArrayList<Album>();
-    public static List<Brinquedo> listaDeBrinquedos = new ArrayList<Brinquedo>();
-    public static List<Filme> listaDeFilmes = new ArrayList<Filme>();
-    public static List<Jogo> listaDeJogos = new ArrayList<Jogo>();
-    public static List<Livro> listaDeLivros = new ArrayList<Livro>();
 
     public enum OperacoesCRUD{
         CREATE,

@@ -15,7 +15,6 @@ public class LivroImpl implements produtoDao {
                 ((Livro)p).getGeneros(), ((Livro)p).getEscritor(), ((Livro)p).getEditora());
 
         Global.listaDeProdutos.add(livro);
-        Global.listaDeLivros.add(livro);
     }
 
     @Override
