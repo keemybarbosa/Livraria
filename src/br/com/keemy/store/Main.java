@@ -32,13 +32,14 @@ public class Main {
     private static void listarProdutos() {
         int i = 0;
         for (Produto produto : Global.listaDeProdutos) {
-            System.out.println(produto.toString());
+            if (!produto.isExcluido()) {
+                System.out.println(produto.toString());
 
-            //Pausa a lista a cada 20 produtos
-            if(++i % 20 == 0){
-                pausar();
+                //Pausa a lista a cada 20 produtos
+                if (++i % 20 == 0) {
+                    pausar();
+                }
             }
-
         }
 
     }
